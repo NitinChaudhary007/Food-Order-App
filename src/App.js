@@ -7,12 +7,20 @@ import "./App.css";
 
 function App() {
 
-  
+  const [isShown, setIsShown] = useState(false);
+
+  const showCartHandler = () => {
+    setIsShown(true);
+  };
+
+  const hideCartHandler = () => {
+    setIsShown(false);
+  };
 
   return (
     <Fragment>
-      <Cart />
-      <Header />
+      {isShown && <Cart onClose={hideCartHandler} />}
+      <Header onShowCart={showCartHandler} />
       <main>
         <Meals />
       </main>
